@@ -9,6 +9,12 @@ import (
 
 //----------------------------------------------------------------------------------------
 
+func NewValError(s string, n int) *ValError {
+	return &ValError{s, n}
+}
+
+//----------------------------------------------------------------------------------------
+
 // ValError clase para identificar Errores en verificación de valores
 type ValError struct {
 	s string // Error description
@@ -84,6 +90,6 @@ func (vc *ValChecker) Error() error {
 	if vc.n == 0 {
 		return nil
 	}
-	vc.msg += fmt.Sprintf("\nTotal errors: %d", vc.n)
-	return &ValError{s: vc.msg, n: vc.n}
+	msg := vc.msg + fmt.Sprintf("\nTotal errors: %d", vc.n)
+	return &ValError{msg, vc.n}
 }
