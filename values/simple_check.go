@@ -11,6 +11,10 @@ func SimpleChecker() *SimpleValChecker {
 	return &SimpleValChecker{0.0, 0}
 }
 
+func Check(val float64) *SimpleValChecker {
+	return &SimpleValChecker{val, 0}
+}
+
 //----------------------------------------------------------------------------------------
 
 type SimpleValChecker struct {
