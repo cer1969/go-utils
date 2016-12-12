@@ -106,9 +106,8 @@ func TestSCMixed(t *testing.T) {
 	if vc.Ok() {
 		t.Error("Ok not expected")
 	}
-	vc = SimpleChecker()
-	vc.Val(30.0).Gt(31.0).Lt(29.0)
-	if vc.Ok() {
+	ok := Check(30.0).Gt(31.0).Lt(29.0).Ok()
+	if ok {
 		t.Error("Ok not expected")
 	}
 }
@@ -117,9 +116,8 @@ func ExampleSimpleChecker() {
 	vc1 := SimpleChecker()
 	vc1.Val(30).Gt(40.0).Gt(100.0)
 	vc1.Val(0.0).Gt(0.0).Lt(1.0)
-	vc2 := SimpleChecker()
-	vc2.Val(0.5).Gt(0.0).Lt(1.0)
-	fmt.Printf("%v - %v", vc1.Ok(), vc2.Ok())
+	ok := Check(0.5).Gt(0.0).Lt(1.0).Ok()
+	fmt.Printf("%v - %v", vc1.Ok(), ok)
 	// Output:
 	// false - true
 }
